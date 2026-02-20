@@ -1,0 +1,95 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flood Prediction</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+.hero{
+    height:90vh;
+    background:url("{{ url_for('static', filename='images/flood_bg.png') }}") center/cover no-repeat;
+    position:relative;
+}
+.hero_predict{
+    height:90vh;
+    background:url("{{ url_for('static', filename='images/62603.jpg') }}") center/cover no-repeat;
+    position:relative;
+}
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgb(0, 0, 0, 0);
+    color: white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+.gt{
+
+    font-size:60px;
+    font-weight:bold;
+
+    background: linear-gradient(45deg, chartreuse, lawngreen, #ffcc00, gold ,  magenta, cyan);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.success-circle{
+    width:90px;
+    height:90px;
+    background:#28a745;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+}
+
+.success-circle i{
+    color:white;
+    font-size:50px;
+}
+
+    .danger-circle{
+    width:90px;
+    height:90px;
+    background:#dc3545;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+}
+.danger-circle i{
+    color:white;
+    font-size:50px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<div class="container">
+<a class="navbar-brand" href="/">Flood Prediction</a>
+<div>
+<a class="nav-link text-white d-inline" href="/">Home&nbsp;&nbsp;</a>
+<a class="nav-link text-white d-inline" href="/predict_page">&nbsp;&nbsp;Predict Flood</a>
+</div>
+</div>
+</nav>
+
+{% block content %}{% endblock %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<div class="hero_predict">
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-6" style="padding-top:7%;">
+
+<div class="card p-4">
+<h3 class="text-center mb-3">Flood Prediction Form</h3>
+
+<form method="POST" action="/predict">
+<input class="form-control mb-3" name="cloud" placeholder="Cloud Cover" required>
+<input class="form-control mb-3" name="annual" placeholder="Annual Rainfall" required>
+<input class="form-control mb-3" name="janfeb" placeholder="Jan-Feb Rainfall" required>
+<input class="form-control mb-3" name="marchmay" placeholder="Mar-May Rainfall" required>
+<input class="form-control mb-3" name="junsep" placeholder="Jun-Sep Rainfall" required>
+
+<button class="btn btn-primary w-100">Predict</button>
+</form>
+
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+<!-- RESULT POPUP -->
+{% if prediction %}
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+    var myModal = new bootstrap.Modal(document.getElementById('resultModal'));
+    myModal.show();
+});
+</script>
+{% endif %}
+
+
+{% if prediction %}
+<div class="modal fade" id="resultModal" tabindex="-1">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content text-center">
+
+<div class="modal-header bg-success text-white">
+<h5 class="modal-title">Prediction Result</h5>
+<button class="btn-close" data-bs-dismiss="modal"></button>
+</div>
+
+
+
+<div class="modal-body">
+
+    <div class="modal-body text-center">
+
+{% if prediction == "No Flood" %}
+    <div class="success-circle mb-3">
+        <i class="bi bi-check-lg"></i>
+    </div>
+{% else %}
+    <div class="danger-circle mb-3">
+        <i class="bi bi-exclamation-lg"></i>
+    </div>
+{% endif %}
+
+<h3>{{ prediction }}</h3>
+
+</div>
+
+<div class="modal-footer">
+<button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<script>
+var myModal = new bootstrap.Modal(document.getElementById('resultModal'));
+window.onload = function(){ myModal.show(); };
+</script>
+{% endif %}
+
+{% endblock %}
